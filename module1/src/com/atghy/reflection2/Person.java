@@ -1,9 +1,5 @@
 package com.atghy.reflection2;
 
-import org.junit.Test;
-
-import java.io.Serializable;
-
 @MyAnnotation(value="hi")
 public class Person extends CreaSure<String> implements Comparable<String>,MyInterface {
     private String name;
@@ -28,8 +24,8 @@ public class Person extends CreaSure<String> implements Comparable<String>,MyInt
         return nation;
     }
 
-    public String diaplay(String insterest){
-        return insterest;
+    public String diaplay(String insterest,int age) throws NullPointerException,ClassCastException{
+        return insterest + age;
     }
 
     @Override
