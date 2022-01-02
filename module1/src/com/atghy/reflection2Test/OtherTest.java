@@ -3,6 +3,7 @@ package com.atghy.reflection2Test;
 import com.atghy.reflection2.Person;
 import org.junit.Test;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -52,5 +53,42 @@ public class OtherTest {
         Type[] actualTypeArguments = paramType.getActualTypeArguments();
 //        System.out.println(actualTypeArguments[0].getTypeName());
         System.out.println(((Class)actualTypeArguments[0]).getName());
+    }
+
+    @Test
+    public void test5(){
+        //获取运行时类实现的接口
+        Class clazz = Person.class;
+        //getInterfaces():获取运行时类实现的接口
+        Class[] interfaces = clazz.getInterfaces();
+        for(Class i : interfaces){
+            System.out.println(i);
+        }
+        System.out.println();
+        //getSuperclass().getInterfaces():获取运行时类继承父类实现的接口
+        Class[] interfaces1 = clazz.getSuperclass().getInterfaces();
+        for(Class i : interfaces1){
+            System.out.println(i);
+        }
+        System.out.println();
+    }
+
+    @Test
+    public void test6(){
+        Class clazz = Person.class;
+        //getPackage()：获取运行时类所在的包
+        Package pack = clazz.getPackage();
+        System.out.println(pack);
+    }
+
+    @Test
+    public void test7(){
+        Class clazz = Person.class;
+        //getPackage()：获取运行时类声明的注解
+        Annotation[] annotations = clazz.getAnnotations();
+        for(Annotation a : annotations){
+            System.out.println(a);
+        }
+
     }
 }
